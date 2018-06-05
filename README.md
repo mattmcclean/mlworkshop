@@ -7,4 +7,4 @@ Follow the instructions below to setup your S3 bucket, IAM role and SageMaker No
 
 We will use [CloudFormation](https://aws.amazon.com/cloudformation/) to create our resources via a template file. To do this, 
 
-[![CloudFormation](cfn-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=MLWorkshopStack&templateURL=)
+[![CloudFormation](cfn-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=MLWorkshopStack&templateURL=https://raw.githubusercontent.com/mattmcclean/mlworkshop/master/cfn.yml)
