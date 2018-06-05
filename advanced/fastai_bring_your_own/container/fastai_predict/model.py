@@ -8,7 +8,7 @@ import boto3
 import torch
 import dill as dill 
 
-from .utils import get_file_with_ext
+import utils
 
 class ClassificationService:
     class __ClassificationService:
