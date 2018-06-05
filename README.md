@@ -1,2 +1,10 @@
-# mlworkshop
-This repo holds the Jupyter notebooks and other resources such as CFN templates to run the ML workshop.
+# Machine Learning Workshop
+This repo holds the Jupyter notebooks and other resources such as CFN templates to run the SageMaker Machine Learning workshop led by Matt McClean from AWS.
+
+## Setup
+
+Follow the instructions below to setup your S3 bucket, IAM role and SageMaker Notebook Instance.
+
+We will use [CloudFormation](https://aws.amazon.com/cloudformation/) to create our resources via a template file. To do this, 
+
+[<img src="https://dmhnzl5mp9mj6.cloudfront.net/application-management_awsblog/images/cloudformation-launch-stack.png">](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=MLWorkshopStack&templateURL=)
