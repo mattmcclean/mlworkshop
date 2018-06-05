@@ -6,8 +6,8 @@ import numpy as np
 # Do not remove the following line
 import sys;sys.path.append("..")  # NOQA
 
-from .model import ClassificationService
-from .utils import *
+import model
+import utils
 
 _MODEL_PATH = os.path.join('/opt/ml/', 'model')  # Path where all your model(s) live in
 _TMP_IMG_PATH = os.path.join('/tmp', 'images')

@@ -5,7 +5,7 @@ import traceback
 
 import flask
 
-from . import predict
+import predict
 
 
 app = flask.Flask(__name__)
