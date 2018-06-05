@@ -11,6 +11,13 @@ We will use [CloudFormation](https://aws.amazon.com/cloudformation/) to create o
 
 [![CloudFormation](img/cfn-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=MLWorkshopStack&templateURL=https://s3-eu-west-1.amazonaws.com/mmcclean-public-files/mlworkshop/cfn.yml)
 
+Take note of the resources created including:
+ - **S3 bucket** where the training data and models will be stored
+ - **IAM service role** allowing SageMaker access various AWS services
+ - **SageMaker Notebook Instance** to run the exercises in the workshop.
+
+![Screenshot](img/cfn-outputs.png)
+
 2. Open the SageMaker Management console and select the SageMaker notebook instance named: **AmsterdamWorkshopInstance** as per the screenshot below.
 
 ![Screenshot](img/sagemaker-nb.png)
