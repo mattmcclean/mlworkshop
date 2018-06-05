@@ -24,3 +24,5 @@ Click the open button to open the Jupyter web application as per the screenshot 
 ```
 git clone https://github.com/mattmcclean/mlworkshop.git ~/SageMaker/aws-ml-workshop/
 ```
+
+![Screenshot](img/git-clone.png)
