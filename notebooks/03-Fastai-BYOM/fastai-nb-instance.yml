@@ -1,0 +1,84 @@
+Description: "Creates the SageMaker Notebook Instance and Lifecycle Configurations for the fast.ai example notebook."
+Parameters:
+
+  NotebookInstanceType:
+    Type: "String"
+    Default:  ml.p3.2xlarge
+    AllowedValues:
+      - ml.p2.xlarge
+      - ml.p3.2xlarge
+    Description: Enter a valid SageMaker notebook instance type with GPU (either ml.p2.xlarge or ml.p3.2xlarge). Defaults to ml.p3.2xlarge.
+
+Resources:
+
+  FastaiNotebookInstanceLifecycleConfig:
+    Type: "AWS::SageMaker::NotebookInstanceLifecycleConfig"
+    Properties:
+      OnStart:
+        - Content:
+            Fn::Base64: |
+              #!/bin/bash
+              set -e
+
+              echo "Creating fast.ai conda enviornment"
+              cat > /home/ec2-user/fastai-setup.sh << EOF
+              #!/bin/bash
+              set -e
+              cd /home/ec2-user/SageMaker/fastai
+              echo "Updating base conda enviornment"
+              conda update -n base conda -y
+              echo "Installing fast.ai conda env"
+              conda env update
+              source activate fastai
+              echo "Installing AWS python libraries (sagemaker & boto3)"
+              pip install sagemaker boto3
+              echo "Finished OnStart script"
+              EOF
+
+              chown ec2-user:ec2-user /home/ec2-user/fastai-setup.sh
+              chmod 755 /home/ec2-user/fastai-setup.sh
+
+              sudo -i -u ec2-user bash << EOF
+              echo "Creating fast.ai conda env in background process."
+              nohup /home/ec2-user/fastai-setup.sh &
+              EOF
+
+      OnCreate:
+        - Content:
+            Fn::Base64: |
+              #!/bin/bash
+              set -e
+
+              sudo -i -u ec2-user bash << EOF
+              echo "Setup the data directory"
+              mkdir -p /home/ec2-user/SageMaker/data
+
+              echo "Setup the fast.ai library"
+              git clone https://github.com/fastai/fastai.git /home/ec2-user/SageMaker/fastai
+              cd /home/ec2-user/SageMaker/fastai/courses/dl1/
+              ln -s /home/ec2-user/SageMaker/data data
+
+              echo "Getting the fast.ai model weights"
+              wget -q http://files.fast.ai/models/weights.tgz
+              tar zxvf weights.tgz -C /home/ec2-user/SageMaker/fastai/fastai
+              rm weights.tgz
+
+              echo "Clone the ML Workshop project from GitHub"
+              git clone https://github.com/mattmcclean/mlworkshop.git /home/ec2-user/SageMaker/mlworkshop
+              cd /home/ec2-user/SageMaker/mlworkshop/notebooks/03-Fastai-BYOM
+              ln -s /home/ec2-user/SageMaker/fastai/fastai fastai
+              ln -s /home/ec2-user/SageMaker/data data
+              echo "Finished OnCreate script"
+              EOF
+
+  FastaiNotebookInstance:
+    Type: "AWS::SageMaker::NotebookInstance"
+    Properties:
+      NotebookInstanceName: FastaiNotebookInstance
+      InstanceType: !Ref NotebookInstanceType
+      RoleArn: !ImportValue SageMakerIamServiceRoleArn
+      LifecycleConfigName: !GetAtt FastaiNotebookInstanceLifecycleConfig.NotebookInstanceLifecycleConfigName
+
+Outputs:
+  FastaiNotebookInstance:
+    Value: !GetAtt FastaiNotebookInstance.NotebookInstanceName

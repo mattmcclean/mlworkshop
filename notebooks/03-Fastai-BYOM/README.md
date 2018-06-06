@@ -1,4 +1,4 @@
-# Machine Learning Workshop
+# fast.ai BYOM exercise
 This directory contains an example of bringing your own framework/library to SageMaker. It is using the OpenSource library called [fast.ai](https://github.com/fastai/fastai) which is used in the popular MOOC fast.ai [MOOC course](http://course.fast.ai/) and is based on [PyTorch](https://pytorch.org/).
 
 ## Step 1 - Create the SageMaker Notebook instance
@@ -13,4 +13,10 @@ To do this click the **Launch Template** button below to create a new SageMaker 
 
 Open the Jupyter notebook web console by selecting the SageMaker notebook instance called *FastaiNotebookInstance* and clicking the option **Open** in the AWS Management Console.
 
-Navigate to the directory **
+Navigate to the directory *mlworkshop/notebooks/03-Fastai-BYOM* and open the notebook named **03-fastai_caltech256_train.ipynb**. Run through the steps of the notebook to train and deploy your fast.ai based model.
+
+Your model will then be saved to the directory:
+
+```
+
+```

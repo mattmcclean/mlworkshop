@@ -11,17 +11,10 @@ Parameters:
       - ml.t2.2xlarge
       - ml.m4.xlarge
       - ml.m4.2xlarge
-      - ml.m4.4xlarge
-      - ml.m4.10xlarge
-      - ml.m4.16xlarge
       - ml.p2.xlarge
-      - ml.p2.8xlarge
-      - ml.p2.16xlarge
       - ml.p3.2xlarge
-      - ml.p3.8xlarge
-      - ml.p3.16xlarge
-    Description: Enter a valid SageMaker notebook instance type. Defaults to ml.t2.medium. 
-    
+    Description: Enter a valid SageMaker notebook instance type. Defaults to ml.t2.medium.
+
 Resources:
   SageMakerBucket:
     Type: "AWS::S3::Bucket"
@@ -31,7 +24,7 @@ Resources:
         -
           Key: Name
           Value: SageMakerMLWorkshop
-          
+
   SageMakerIamRole:
     Type: "AWS::IAM::Role"
     Properties:
@@ -51,10 +44,10 @@ Resources:
   SageMakerNotebookInstance:
     Type: "AWS::SageMaker::NotebookInstance"
     Properties:
-      NotebookInstanceName: AmsterdamWorkshopInstance
+      NotebookInstanceName: MLWorkshopInstance
       InstanceType: !Ref NotebookInstanceType
       RoleArn: !GetAtt SageMakerIamRole.Arn
-      
+
 Outputs:
   SageMakerNotebookInstance:
     Value: !GetAtt SageMakerNotebookInstance.NotebookInstanceName
@@ -62,3 +55,5 @@ Outputs:
     Value: !Ref SageMakerBucket
   IAMRole:
     Value: !GetAtt SageMakerIamRole.Arn
+    Export:
+      Name: SageMakerIamServiceRoleArn
