@@ -7,7 +7,7 @@ Follow the instructions below to setup your S3 bucket, IAM role and SageMaker No
 
 We will use [CloudFormation](https://aws.amazon.com/cloudformation/) to create our resources via a template file. To do this,
 
-1. Click the **Launch Template** button below to open the AWS CloudFormation Web Console to create a new CloudFormation stack. Click through the options and select the SageMaker instance type. The *ml.t2.medium* option is part of the AWS Free Tier. See the SageMaker [pricing page](https://aws.amazon.com/sagemaker/pricing/) for more details.
+1. Click the **Launch Template** button below to open the AWS CloudFormation Web Console to create a new CloudFormation stack. Click through the options and select the SageMaker instance type. The **ml.t2.medium** option is part of the AWS Free Tier. See the SageMaker [pricing page](https://aws.amazon.com/sagemaker/pricing/) for more details.
 
 [![CloudFormation](img/cfn-launch-stack.png)](https://eu-west-1.console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/create/review?filter=active&templateURL=https%3A%2F%2Fs3-eu-west-1.amazonaws.com%2Fmmcclean-public-files%2Fmlworkshop%2Fcfn.yml&stackName=MLWorkshopStack&param_NotebookInstanceType=ml.t2.medium)
 
@@ -29,7 +29,7 @@ Click the open button to open the Jupyter web application as per the screenshot 
 3. Clone this GitHub repository to the local SageMaker Notebook instance with the following command:
 
 ```
-git clone https://github.com/mattmcclean/mlworkshop.git ~/SageMaker/aws-ml-workshop/
+git clone https://github.com/mattmcclean/mlworkshop.git ~/SageMaker/mlworkshop/
 ```
 
 An example screenshot is shown below:
