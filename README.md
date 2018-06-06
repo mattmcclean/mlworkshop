@@ -9,7 +9,7 @@ We will use [CloudFormation](https://aws.amazon.com/cloudformation/) to create o
 
 1. Click the **Launch Template** button below to open the AWS CloudFormation Web Console to create a new CloudFormation stack. Click through the options and select the SageMaker instance type. The *ml.t2.medium* option is part of the AWS Free Tier. See the SageMaker [pricing page](https://aws.amazon.com/sagemaker/pricing/) for more details.
 
-[![CloudFormation](img/cfn-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=MLWorkshopStack&templateURL=https://s3-eu-west-1.amazonaws.com/mmcclean-public-files/mlworkshop/cfn.yml)
+[![CloudFormation](img/cfn-launch-stack.png)](https://eu-west-1.console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/create/review?filter=active&templateURL=https%3A%2F%2Fs3-eu-west-1.amazonaws.com%2Fmmcclean-public-files%2Fmlworkshop%2Fcfn.yml&stackName=MLWorkshopStack&param_NotebookInstanceType=ml.t2.medium)
 
 Take note of the resources created including:
  - **S3 bucket** where the training data and models will be stored
