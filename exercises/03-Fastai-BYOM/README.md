@@ -13,7 +13,7 @@ To do this click the **Launch Template** button below to create a new SageMaker 
 
 Open the Jupyter notebook web console by selecting the SageMaker notebook instance called **FastaiNotebookInstance** and clicking the option **Open** in the AWS Management Console.
 
-Navigate to the directory ``mlworkshop/notebooks/03-Fastai-BYOM`` and open the notebook named ``03-fastai_caltech256_train.ipynb``. Run through the steps of the notebook to train and deploy your fast.ai based model.
+Navigate to the directory ``mlworkshop/exercises/03-Fastai-BYOM`` and open the notebook named ``03-fastai_caltech256_train.ipynb``. Run through the steps of the notebook to train and deploy your fast.ai based model.
 
 Your model will then be saved to your S3 bucket (replace **<account_id>** with your AWS account id and **<region>** with the AWS region name):
 
@@ -27,6 +27,6 @@ Now that you have trained your fast.ai model you no longer need it so either sto
 
 ## Step 4 - Deploy your fast.ai model to a new SageMaker hosting endpoint
 
-Open your original SageMaker notebook instance called **MLWorkshopInstance** and open the Jupyter notebook in the folder ``mlworkshop/notebooks/03-Fastai-BYOM`` titled ``03-fastai_caltech256_predict.ipynb``. Run through the steps of the notebook to create your SageMaker model and deploy the SageMaker endpoint.
+Open your original SageMaker notebook instance called **MLWorkshopInstance** and open the Jupyter notebook in the folder ``mlworkshop/exercises/03-Fastai-BYOM`` titled ``03-fastai_caltech256_predict.ipynb``. Run through the steps of the notebook to create your SageMaker model and deploy the SageMaker endpoint.
 
 The final steps show you how to call the SageMaker endpoint and check the results.

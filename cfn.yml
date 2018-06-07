@@ -1,4 +1,4 @@
-Description: " Creates resources (S3 Bucket, IAM roles, SageMaker Notebook instance) for ML Workshop via CloudFormation"
+Description: " Creates resources (S3 Bucket, IAM roles, SageMaker Notebook instance) for the ML Workshop"
 Parameters:
 
   NotebookInstanceType:
@@ -41,12 +41,26 @@ Resources:
         - "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess"
         - "arn:aws:iam::aws:policy/AmazonSageMakerFullAccess"
 
+  MLWorkshopLifecycleConfig:
+    Type: "AWS::SageMaker::NotebookInstanceLifecycleConfig"
+    Properties:
+      OnCreate:
+        - Content:
+            Fn::Base64: |
+              #!/bin/bash
+              set -e
+              sudo -i -u ec2-user bash << EOF
+              echo "Setup the Workshop exercises"
+              git clone https://github.com/mattmcclean/mlworkshop.git ~/SageMaker/mlworkshop/
+              EOF
+
   SageMakerNotebookInstance:
     Type: "AWS::SageMaker::NotebookInstance"
     Properties:
       NotebookInstanceName: MLWorkshopInstance
       InstanceType: !Ref NotebookInstanceType
       RoleArn: !GetAtt SageMakerIamRole.Arn
+      LifecycleConfigName: !GetAtt MLWorkshopLifecycleConfig.NotebookInstanceLifecycleConfigName
 
 Outputs:
   SageMakerNotebookInstance:

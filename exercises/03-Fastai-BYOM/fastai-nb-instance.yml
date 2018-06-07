@@ -65,7 +65,7 @@ Resources:
 
               echo "Clone the ML Workshop project from GitHub"
               git clone https://github.com/mattmcclean/mlworkshop.git /home/ec2-user/SageMaker/mlworkshop
-              cd /home/ec2-user/SageMaker/mlworkshop/notebooks/03-Fastai-BYOM
+              cd /home/ec2-user/SageMaker/mlworkshop/exercises/03-Fastai-BYOM
               ln -s /home/ec2-user/SageMaker/fastai/fastai fastai
               ln -s /home/ec2-user/SageMaker/data data
               echo "Finished OnCreate script"
