@@ -22,16 +22,4 @@ Take note of the resources created including:
 
 ![Screenshot](img/sagemaker-nb.png)
 
-Click the open button to open the Jupyter web application as per the screenshot below.
 
-![Screenshot](img/terminal.png)
-
-3. Clone this GitHub repository to the local SageMaker Notebook instance with the following command:
-
-```
-git clone https://github.com/mattmcclean/mlworkshop.git ~/SageMaker/mlworkshop/
-```
-
-An example screenshot is shown below:
-
-![Screenshot](img/git-clone.png)
